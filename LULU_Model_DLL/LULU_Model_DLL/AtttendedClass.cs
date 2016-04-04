@@ -11,11 +11,12 @@ namespace LULU_Model_DLL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
     public partial class AtttendedClass
     {
+        [DataMember()]
         public int AttendedClassID { get; set; }
-    
+        
         public virtual Class Class { get; set; }
         public virtual Student Student { get; set; }
         public virtual GPS_Login GPS_Login { get; set; }
