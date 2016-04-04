@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 02/28/2016 00:06:36
--- Generated from EDMX file: C:\Users\DynamicDuo\Source\Repos\LULU_WCF_Service\LULU_WCF_Service\LULU_Model.edmx
+-- Date Created: 04/04/2016 19:54:08
+-- Generated from EDMX file: C:\Users\arcan\Source\Repos\LULU_Model_DLL\LULU_Model_DLL\LULU_Model_DLL\LULU_Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
