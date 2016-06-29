@@ -495,7 +495,7 @@
           <Property Name="Longitude" Type="Decimal" Nullable="false" />
           <Property Name="Latitude" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="LULU_Model.ClassRoomClass" FromRole="ClassRoom" ToRole="Class" />
-          <NavigationProperty Name="Campu" Relationship="LULU_Model.CampusClassRoom" FromRole="ClassRoom" ToRole="Campus" />
+          <NavigationProperty Name="Campus" Relationship="LULU_Model.CampusClassRoom" FromRole="ClassRoom" ToRole="Campus" />
         </EntityType>
         <EntityType Name="Campus">
           <Key>

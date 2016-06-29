@@ -11,9 +11,7 @@ namespace LULU_Model_DLL
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-
-    [DataContract]
+    
     public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +20,13 @@ namespace LULU_Model_DLL
             this.Students = new HashSet<Student>();
             this.Classes = new HashSet<Class>();
         }
-        [DataMember()]
+    
         public int CourseID { get; set; }
-        [DataMember()]
         public string CourseCode { get; set; }
-        [DataMember()]
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [IgnoreDataMember]
         public virtual ICollection<Student> Students { get; set; }
-        [IgnoreDataMember]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }
     }

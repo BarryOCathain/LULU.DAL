@@ -27,6 +27,6 @@ namespace LULU_Model_DLL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }
-        public virtual Campus Campu { get; set; }
+        public virtual Campus Campus { get; set; }
     }
 }
