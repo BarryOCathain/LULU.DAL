@@ -106,8 +106,7 @@
       <PropertyRef Name="LoginID" />
     </Key>
     <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LoginDate" Type="datetime" Nullable="false" />
-    <Property Name="LoginTime" Type="time" Nullable="false" />
+    <Property Name="LoginDateAndTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Courses1">
     <Key>
@@ -123,9 +122,9 @@
     </Key>
     <Property Name="ClassRoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Longitude" Type="decimal" Nullable="false" />
-    <Property Name="Latitude" Type="decimal" Nullable="false" />
-    <Property Name="Campu_CampusID" Type="int" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Nullable="false" Precision="9" Scale="6" />
+    <Property Name="Latitude" Type="decimal" Nullable="false" Precision="9" Scale="6" />
+    <Property Name="Campus_CampusID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Campus">
     <Key>
@@ -156,8 +155,8 @@
       <PropertyRef Name="LoginID" />
     </Key>
     <Property Name="GPS_LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Longitude" Type="decimal" Nullable="false" />
-    <Property Name="Latitude" Type="decimal" Nullable="false" />
+    <Property Name="Longitude" Type="decimal" Nullable="false" Precision="9" Scale="6" />
+    <Property Name="Latitude" Type="decimal" Nullable="false" Precision="9" Scale="6" />
     <Property Name="LoginID" Type="int" Nullable="false" />
     <Property Name="AtttendedClass_AttendedClassID" Type="int" Nullable="false" />
   </EntityType>
@@ -248,7 +247,7 @@
         <PropertyRef Name="CampusID" />
       </Principal>
       <Dependent Role="ClassRoom">
-        <PropertyRef Name="Campu_CampusID" />
+        <PropertyRef Name="Campus_CampusID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -473,8 +472,7 @@
             <PropertyRef Name="LoginID" />
           </Key>
           <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoginDate" Type="DateTime" Nullable="false" />
-          <Property Name="LoginTime" Type="Time" Nullable="false" />
+          <Property Name="LoginDateAndTime" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -492,8 +490,8 @@
           </Key>
           <Property Name="ClassRoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Longitude" Type="Decimal" Nullable="false" />
-          <Property Name="Latitude" Type="Decimal" Nullable="false" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Scale="6" Precision="9" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Scale="6" Precision="9" />
           <NavigationProperty Name="Classes" Relationship="LULU_Model.ClassRoomClass" FromRole="ClassRoom" ToRole="Class" />
           <NavigationProperty Name="Campus" Relationship="LULU_Model.CampusClassRoom" FromRole="ClassRoom" ToRole="Campus" />
         </EntityType>
@@ -511,8 +509,8 @@
         </EntityType>
         <EntityType Name="GPS_Login" BaseType="LULU_Model.Login">
           <Property Name="GPS_LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Longitude" Type="Decimal" Nullable="false" />
-          <Property Name="Latitude" Type="Decimal" Nullable="false" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="9" Scale="6" />
           <NavigationProperty Name="AtttendedClass" Relationship="LULU_Model.AtttendedClassGPS_Login" FromRole="GPS_Login" ToRole="AtttendedClass" />
         </EntityType>
         <Association Name="StudentCourse">
@@ -590,8 +588,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(LULU_Model.Login)">
         <MappingFragment StoreEntitySet="Logins">
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
-          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
-          <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+          <ScalarProperty Name="LoginDateAndTime" ColumnName="LoginDateAndTime" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(LULU_Model.GPS_Login)">
@@ -707,7 +704,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="CampusClassRoom" TypeName="LULU_Model.CampusClassRoom" StoreEntitySet="ClassRooms1">
       <EndProperty Name="Campus">
-        <ScalarProperty Name="CampusID" ColumnName="Campu_CampusID" />
+        <ScalarProperty Name="CampusID" ColumnName="Campus_CampusID" />
       </EndProperty>
       <EndProperty Name="ClassRoom">
         <ScalarProperty Name="ClassRoomID" ColumnName="ClassRoomID" />

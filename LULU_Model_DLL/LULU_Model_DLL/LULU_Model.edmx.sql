@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/04/2016 19:54:08
--- Generated from EDMX file: C:\Users\arcan\Source\Repos\LULU_Model_DLL\LULU_Model_DLL\LULU_Model_DLL\LULU_Model.edmx
+-- Date Created: 07/02/2016 22:03:08
+-- Generated from EDMX file: C:\Users\DynamicDuo\Source\Repos\LULU_Model_DLL\LULU_Model_DLL\LULU_Model_DLL\LULU_Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -135,8 +135,7 @@ GO
 -- Creating table 'Logins'
 CREATE TABLE [dbo].[Logins] (
     [LoginID] int IDENTITY(1,1) NOT NULL,
-    [LoginDate] datetime  NOT NULL,
-    [LoginTime] time  NOT NULL
+    [LoginDateAndTime] datetime  NOT NULL
 );
 GO
 
@@ -152,9 +151,9 @@ GO
 CREATE TABLE [dbo].[ClassRooms1] (
     [ClassRoomID] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Longitude] decimal(18,0)  NOT NULL,
-    [Latitude] decimal(18,0)  NOT NULL,
-    [Campu_CampusID] int  NOT NULL
+    [Longitude] decimal(9,6)  NOT NULL,
+    [Latitude] decimal(9,6)  NOT NULL,
+    [Campus_CampusID] int  NOT NULL
 );
 GO
 
@@ -185,8 +184,8 @@ GO
 -- Creating table 'Logins_GPS_Login'
 CREATE TABLE [dbo].[Logins_GPS_Login] (
     [GPS_LoginID] int IDENTITY(1,1) NOT NULL,
-    [Longitude] decimal(18,0)  NOT NULL,
-    [Latitude] decimal(18,0)  NOT NULL,
+    [Longitude] decimal(9,6)  NOT NULL,
+    [Latitude] decimal(9,6)  NOT NULL,
     [LoginID] int  NOT NULL,
     [AtttendedClass_AttendedClassID] int  NOT NULL
 );
@@ -392,10 +391,10 @@ ON [dbo].[Classes]
     ([ClassRoom_ClassRoomID]);
 GO
 
--- Creating foreign key on [Campu_CampusID] in table 'ClassRooms1'
+-- Creating foreign key on [Campus_CampusID] in table 'ClassRooms1'
 ALTER TABLE [dbo].[ClassRooms1]
 ADD CONSTRAINT [FK_CampusClassRoom]
-    FOREIGN KEY ([Campu_CampusID])
+    FOREIGN KEY ([Campus_CampusID])
     REFERENCES [dbo].[Campus]
         ([CampusID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -404,7 +403,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_CampusClassRoom'
 CREATE INDEX [IX_FK_CampusClassRoom]
 ON [dbo].[ClassRooms1]
-    ([Campu_CampusID]);
+    ([Campus_CampusID]);
 GO
 
 -- Creating foreign key on [AtttendedClass_AttendedClassID] in table 'Logins_GPS_Login'
